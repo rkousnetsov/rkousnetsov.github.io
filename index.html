@@ -1,162 +1,189 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-<head>
-<style>
-img
-{
-	display: block;
-	margin-left: auto;
-    margin-right: auto;
-}
-table
-{
-	border-collapse: collapse;
-	margin-left: auto;
-    margin-right: auto;
-}
-th, td
-{
-	border: 1px solid black;
-	padding: 15px;
-}
-h1
-{
-	text-align: center;
-}
-h1, p, a
-{
-	font: "Times New Roman", Times, serif;
-}
-</style>
-</head>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-<body>
-<h1>A Glance into the Qualities of RTS Gamers</h1>
+    <title>Rkousnetsov.GitHub.io by rkousnetsov</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Rkousnetsov.GitHub.io</h1>
+        <h2>CSCI 183 Blog Post</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/rkousnetsov" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="a-glance-into-the-qualities-of-rts-gamers" class="anchor" href="#a-glance-into-the-qualities-of-rts-gamers" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Glance into the Qualities of RTS Gamers</h1>
+
+<hr>
+
+<h1>
+<a id="background" class="anchor" href="#background" aria-hidden="true"><span class="octicon octicon-link"></span></a>Background</h1>
+
 <p>Starcraft 2 is an incredibly popular real time strategy (RTS) game produced by Blizzard Entertainment. While this game is recreationally enjoyed worldwide, there also exists a well-developed ranked match system known as Battle.net that enables players to play competitively. Herein, players are divided into leagues based on their in-game performance in various match types (1 vs 1, 2 vs 2, 3 vs 3, or 4 vs 4), such that points are won or lost according to victories or defeats, respectively. These leagues span six levels (from least points to most points): bronze, silver, gold, platinum, diamond, and master. In addition, there exists a special level, known as grandmaster, that is reserved for the best 200 players in each region of the world. Lastly, it should be noted that there is some players play this game professionally, such that Starcraft 2 has blossomed into a electronic sport that is beloved throughout the world (in fact, Starcraft 1 was a highly successful eSport).</p>
+
+<h1>
+<a id="purpose" class="anchor" href="#purpose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Purpose</h1>
+
 <p>Clearly, players in each league are differentiated in terms of their different skill levels. Using data that was collected from Starcraft 2 players in order to conduct a formal cognitive science study, this blog will explore which particular statistics can serve as good indicators of league membership and, by extension, skill level. For the purposes of this analysis, all six basic leagues and the grandmaster league will be considered.</p>
-<p>A reasonable statistic to begin with may be play time, after all the popular saying “practice makes perfect” does have some merit. The following figure summarizes the time commitment for players in each league. Interestingly, the amount of overall play time steadily increases as a player’s league becomes more advanced, while the per week play time only seems to noticeably increase in the very advanced leagues (master and grandmaster). </p>
-<img src="hoursPerWeek.png" alt="Hours Per Week By League Box Plot"/>
-<img src="totalHours.png" alt="Total Hours Played By League Box Plot"/>
 
-<br/>
+<h1>
+<a id="playing-time" class="anchor" href="#playing-time" aria-hidden="true"><span class="octicon octicon-link"></span></a>Playing Time</h1>
 
-<p>Another reasonable group of statistics to assess skill level include those describe the speed with which a player issues commands and the sheer number of commands a player issues over a short time period. Respectively, this can be measured through action latency, which represents the average length between successive commands, and actions per minute, which represents the average number of commands given per minute. The following figure summarizes both of these statistics for each league. As expected, the action latency decreases and the number of actions per minute increase as a player’s league becomes more advanced.</p>
-<img src="apm.png" alt="APM By League Box Plot"/>
-<img src="actionLatency.png" alt="Action Latency By League Box Plot"/>
+<p>A reasonable statistic to begin with may be play time, after all the popular saying “practice makes perfect” does have some merit. The following figure summarizes the time commitment for players in each league. Interestingly, the amount of overall play time steadily increases as a player’s league becomes more advanced, while the per week play time only seems to noticeably increase in the very advanced leagues (master and grandmaster).</p>
 
-<br/>
+<p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/hoursPerWeek.png" alt="Hours Per Week Playing Time By League PNG file"></p>
 
-<p>Visually, it appears that both groups of statistics shown above are associated with skill level. However, it is not evident which of these statistics is the best predictor of skill level. Consequently, a random forest will be used to fit the entire data set. By taking a consensus of many decisions trees, each of which contains a random subset of the features in the data set (which include many additional features in addition to the ones shown above), a random forest creates a robust model from which it is possible to extract the features that are most strongly associated with skill level. The same approach can be utilized using other models.Interestingly, all three models below give different importance rankings for the features. It seems, however, that action latency may be considered the best feature overall, given that it ranks most highly in all three models.</p>
+<p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/totalHours.png" alt="Total Hours Playing Time By League PNG file"></p>
+
+<h1>
+<a id="reaction-speed" class="anchor" href="#reaction-speed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reaction Speed</h1>
+
+<p>Another reasonable group of statistics to assess skill level include those describe the speed with which a player issues commands and the sheer number of commands a player issues over a short time period (both of which can be considered as extensions of reaction time). Respectively, this can be measured through action latency, which represents the average length between successive commands, and actions per minute (APM), which represents the average number of commands given per minute. The following figure summarizes both of these statistics for each league. As expected, the action latency decreases and the number of actions per minute increase as a player’s league becomes more advanced.</p>
+
+<p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/apm.png" alt="Hours Per Week Playing Time By League PNG file"></p>
+
+<p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/actionLatency.png" alt="Total Hours Playing Time By League PNG file"></p>
+
+<h1>
+<a id="comparing-features" class="anchor" href="#comparing-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparing features</h1>
+
+<p>Visually, it appears that both groups of statistics shown above are associated with skill level. However, it is not evident which of these statistics is the best predictor of skill level. Consequently, a random forest will be used to fit the entire data set. By taking a consensus of many decisions trees, each of which contains a random subset of the features in the data set (which include many additional features in addition to the ones shown above), a random forest creates a robust model from which it is possible to extract the features that are most strongly associated with skill level. The same approach can be utilized using other models (for now, this will include extremely randomized trees and gradient boosting). Interestingly, all three models below give different importance rankings for the features. It seems, however, that action latency may be considered the best feature overall, given that it ranks most highly in all three models.</p>
+
 <table>
-	<tr>
-    	<th>Random Forest</th>
-        <th>Extremely Randomized Trees</th>
-        <th>Gradient Boosting</th>
-    </tr>
-    <tr>
-    	<td>Action Latency</td>
-        <td>Action Latency</td>
-        <td>Gap Between PACs</td>
-    </tr>
-    <tr>
-    	<td>Actions Per Minute</td>
-        <td>Actions Per Minute</td>
-        <td>Action Latency</td>
-    </tr>
-    <tr>
-    	<td>Number of PACs</td>
-        <td>Number of PACs</td>
-        <td>Number of PACs</td>
-    </tr>
-    <tr>
-    	<td>Selection by Hotkeys</td>
-        <td>Gap Between PACs</td>
-        <td>Workers Made</td>
-    </tr>
-    <tr>
-    	<td>Total Hours Played</td>
-    	<td>Total Hours Played</td>
-        <td>Assignment to Hotkeys</td>
-    </tr>
-    <tr>
-    	<td>Gap between PACs</td>
-    	<td>Assignment to Hotkeys</td>
-        <td>Selection by Hotkeys</td>
-    </tr>
-    <tr>
-    	<td>Assignment to Hotkeys</td>
-    	<td>Selection by Hotkeys</td>
-        <td>Actions Per Minute</td>
-    </tr>
-    <tr>
-    	<td>Workers Made</td>
-    	<td>Minimap Attacks</td>
-        <td>Number of actions in PAC</td>
-    </tr>
-    <tr>
-    	<td>Minimap Attacks</td>
-    	<td>Workers Made</td>
-        <td>Minimap Right Clicks</td>
-    </tr>
-    <tr>
-    	<td>Number of actions in PAC</td>
-    	<td>Number of unique hotkeys</td>
-        <td>Total hours played</td>
-    </tr>
-    <tr>
-    	<td>Minimap Right Clicks</td>
-    	<td>Hours per week play time</td>
-        <td>Minimap Attacks</td>
-    </tr>
-    <tr>
-    	<td>Percentage of map explored</td>
-    	<td>Number of actions in PAC</td>
-        <td>Percentage of map explored</td>
-    </tr>
-    <tr>
-    	<td>Player age</td>
-    	<td>Player age</td>
-        <td>Complex Ability Usage</td>
-    </tr>
-    <tr>
-    	<td>Hours per week play time</td>
-    	<td>Percentage of map explored</td>
-        <td>Hours per week play time</td>
-    </tr>
-    <tr>
-    	<td>Unique Hotkeys</td>
-    	<td>Minimap right clicks</td>
-        <td>Complex Units Made</td>
-    </tr>
-    <tr>
-    	<td>Complex Ability Usage</td>
-    	<td>Unique Units Made</td>
-        <td>Player Age</td>
-    </tr>
-    <tr>
-    	<td>Unique Units Made</td>
-    	<td>Complex Ability Usage</td>
-        <td>Unique Hotkeys</td>
-    </tr>
-    <tr>
-    	<td>Complex Units Made</td>
-    	<td>Complex Units Made</td>
-        <td>Unique Units Made</td>
-    </tr>
+<thead>
+<tr>
+<th>Random Forest</th>
+<th>Extremely Randomized Trees</th>
+<th>Gradient Boosting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action Latency</td>
+<td>Action Latency</td>
+<td>Gap between PACs</td>
+</tr>
+<tr>
+<td>APM</td>
+<td>APM</td>
+<td>Action Latency</td>
+</tr>
+<tr>
+<td>Number of PACs</td>
+<td>Number of PACs</td>
+<td>Number of PACs</td>
+</tr>
+<tr>
+<td>Selection by Hotkeys</td>
+<td>Gap between PACs</td>
+<td>Workers Made</td>
+</tr>
+<tr>
+<td>Total Hours Played</td>
+<td>Total Hours Played</td>
+<td>Assignment to Hotkeys</td>
+</tr>
+<tr>
+<td>Gap between PACs</td>
+<td>Assignment to Hotkeys</td>
+<td>Selection by Hotkeys</td>
+</tr>
+<tr>
+<td>Assignment to Hotkeys</td>
+<td>Selection by Hotkeys</td>
+<td>APM</td>
+</tr>
+<tr>
+<td>Workers Made</td>
+<td>Minimap Attacks</td>
+<td>Number of actions in PAC</td>
+</tr>
+<tr>
+<td>Minimap Attacks</td>
+<td>Workers Made</td>
+<td>Minimap right clicks</td>
+</tr>
+<tr>
+<td>Number of actions in PAC</td>
+<td>Number of unique hotkeys</td>
+<td>Total Hours Played</td>
+</tr>
+<tr>
+<td>Minimap right clicks</td>
+<td>Hours per week play time</td>
+<td>Minimap Attacks</td>
+</tr>
+<tr>
+<td>Percentage of map explored</td>
+<td>Number of actions in PAC</td>
+<td>Percentage of map explored</td>
+</tr>
+<tr>
+<td>Player age</td>
+<td>Player age</td>
+<td>Complex Ability Usage</td>
+</tr>
+<tr>
+<td>Hours per week play time</td>
+<td>Percentage of map explored</td>
+<td>Hours per week play time</td>
+</tr>
+<tr>
+<td>Number of unique hotkeys</td>
+<td>Minimap right clicks</td>
+<td>Complex Units Made</td>
+</tr>
+<tr>
+<td>Complex Ability Usage</td>
+<td>Unique Units Made</td>
+<td>Player age</td>
+</tr>
+<tr>
+<td>Unique Units Made</td>
+<td>Complex Ability Usage</td>
+<td>Number of unique hotkeys</td>
+</tr>
+<tr>
+<td>Complex Units Made</td>
+<td>Complex Units Made</td>
+<td>Unique Units Made</td>
+</tr>
+</tbody>
 </table>
 
-<br/>
+<h1>
+<a id="comments" class="anchor" href="#comments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comments</h1>
 
-<p>Note to Professor Mohler: Please let me know what other types of analyses you would like to see.</p>
+<p>Note to Professor Mohler (or anyone else who is interested): please let me know what other types of analysis you would like to see.</p>
 
-<p>Useful links:</p>
-<a href="http://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset">Website from which the data set was obtained.</a>
-<br/>
-<a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0075129">The journal article for which this data set was used.</a>
-<br/>
-<a href="http://sc2skillviz.appspot.com/">An elegant, dynamic visualization of the data (using the Tableau framework).</a>
-<br/>
-<a href="https://github.com/rkousnetsov/CSCI_183/tree/master/HW6">Link to GitHub page containing all code and images used on this webpage</a>
-</body>
+<h1>
+<a id="useful-links" class="anchor" href="#useful-links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Useful Links</h1>
 
+<p><a href="http://archive.ics.uci.edu/ml/datasets/SkillCraft1+Master+Table+Dataset">Website containing data set</a></p>
+
+<p><a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0075129">Website containing journal article that used this data set</a></p>
+
+<p><a href="http://sc2skillviz.appspot.com/">Website containing elegant, dynamic visualization of data using the Tableau Framework</a></p>
+
+<p><a href="https://github.com/rkousnetsov/CSCI_183/tree/master/HW6">My GitHub page containing all code and images used in this blog</a></p>
+      </section>
+    </div>
+
+    
+  </body>
 </html>
