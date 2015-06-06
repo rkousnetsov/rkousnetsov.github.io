@@ -60,6 +60,15 @@
 <p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/actionLatency.png" alt="Total Hours Playing Time By League PNG file"></p>
 
 <h1>
+<a id="custom-features-inspired-by-cognition" class="anchor" href="#custom-features-inspired-by-cognition" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Features Inspired by Cognition</h1>
+
+<p>While APM may be appear to be a good feature for distinguishing players by league, it is evident that players can artificially inflate their number of actions per minute (and thereby lower the action latency) by spamming repetitive actions of little value (in fact, many players like to “warm up” their hands by rapidly hitting keys). It is possible to correct for this phenomenon using a modified measure known as effective actions per minute (EPM), but the authors instead chose a different statistic that they call a perception-action-cycle (PAC), which, in terms of cognition, encompasses the act of perception and then acting upon that newly perceived information. In terms of the actual game, this often signifies a movement of the camera followed by an action. This statistic, therefore, provides a better measure of tactically meaningful actions. The two box plots below demonstrate the rate of and gap between players’ PACs. Note that these plots are respectively similar in their shape to APM and action latency. Ultimately, these PAC statistics are robust features for distinguishing league with the added benefit of being resistant to ineffective actions.</p>
+
+<p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/ratePACs.png" alt="Rate of PACs By League PNG file"></p>
+
+<p><img src="https://raw.githubusercontent.com/rkousnetsov/CSCI_183/master/HW6/gapPACs.png" alt="Gap between PACs By League PNG file"></p>
+
+<h1>
 <a id="comparing-features" class="anchor" href="#comparing-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparing features</h1>
 
 <p>Visually, it appears that both groups of statistics shown above are associated with skill level. However, it is not evident which of these statistics is the best predictor of skill level. Consequently, a random forest will be used to fit the entire data set. By taking a consensus of many decisions trees, each of which contains a random subset of the features in the data set (which include many additional features in addition to the ones shown above), a random forest creates a robust model from which it is possible to extract the features that are most strongly associated with skill level. The same approach can be utilized using other models (for now, this will include extremely randomized trees and gradient boosting). Interestingly, all three models below give different importance rankings for the features. It seems, however, that action latency may be considered the best feature overall, given that it ranks most highly in all three models.</p>
